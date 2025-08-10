@@ -11,71 +11,85 @@
             display: flex; 
             justify-content: center; 
             align-items: center; 
-            background: #111; 
-            color: #fff; 
+            background: #fff; 
+            color: #000; 
             font-family: Arial, sans-serif;
             overflow: hidden;
         }
         a { 
-            color: #fff; 
+            color: #000; 
             text-decoration: none; 
         }
-        /* Simple and Minimal Style (default: clean, cool, black background with subtle glow) */
+        /* Simple and Minimal Style (inverted colors with softer strokes) */
         .container {
             text-align: center;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
+            background: #eee; /* Light grey container */
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Dark shadow for contrast */
+            transform: scale(10);
+            opacity: 0;
+            animation: zoomOut 0.5s ease-out forwards;
         }
         .sticker {
             display: block;
             margin: 15px auto;
             padding: 10px 20px;
-            background: #222;
-            border: 1px solid #444;
+            background: #f0f0f0; /* Softer grey to blend with white page */
+            border: 1px solid #ddd; /* Softer, lighter stroke */
             border-radius: 5px;
             transition: background 0.3s, transform 0.3s;
             width: 200px;
             font-size: 18px;
-            color: #fff; /* White text for links */
+            color: #000; /* Black text */
         }
         .sticker:hover {
-            background: #333;
+            background: #e0e0e0; /* Slightly darker on hover for subtle effect */
             transform: scale(1.05);
         }
-        /* Quirky Cyber Silver Y2K Winamp Skin Style (uncomment this block and comment the simple one above to switch) */
+        /* Quirky Cyber Silver Y2K Winamp Skin Style (inverted with softer strokes) */
         /*
         .container {
             text-align: center;
             padding: 20px;
-            background: linear-gradient(135deg, #c0c0c0, #a9a9a9); /* Silver gradient */
-            border: 2px solid #000;
+            background: linear-gradient(135deg, #a9a9a9, #c0c0c0); /* Inverted silver gradient */
+            border: 2px solid #fff; /* Light border */
             border-radius: 0; /* Sharp edges for Y2K */
-            box-shadow: 5px 5px 0 #000, inset 2px 2px 0 #fff, inset -2px -2px 0 #808080; /* Beveled Winamp look */
+            box-shadow: 5px 5px 0 #fff, inset 2px 2px 0 #000, inset -2px -2px 0 #7f7f7f; /* Inverted beveled look */
             font-family: 'Courier New', monospace;
-            color: #fff; /* White text for consistency */
+            color: #000;
+            transform: scale(10);
+            opacity: 0;
+            animation: zoomOut 0.5s ease-out forwards;
         }
         .sticker {
             display: block;
             margin: 15px auto;
             padding: 10px 20px;
-            background: #00ff00; /* Neon green buttons */
-            border: 1px solid #000;
+            background: #f0f0f0; /* Softer grey for Y2K buttons */
+            border: 1px solid #ddd; /* Softer stroke */
             border-radius: 0;
-            box-shadow: 2px 2px 0 #000;
+            box-shadow: 2px 2px 0 #fff;
             transition: box-shadow 0.3s, transform 0.3s;
             width: 200px;
             font-size: 18px;
-            color: #fff; /* White text for links */
+            color: #000;
             text-transform: uppercase;
         }
         .sticker:hover {
-            box-shadow: 1px 1px 0 #000;
+            box-shadow: 1px 1px 0 #fff;
             transform: translate(1px, 1px);
         }
-        a { color: #fff; }
+        a { color: #000; }
         */
+        @keyframes zoomOut {
+            from { transform: scale(10); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(10); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -89,7 +103,8 @@
         document.addEventListener('click', function(event) {
             const container = document.querySelector('.container');
             if (!container.contains(event.target)) {
-                window.location.href = 'index.html';
+                container.style.animation = 'zoomIn 0.5s ease-out forwards';
+                setTimeout(() => { window.location.href = 'index.html'; }, 500);
             }
         });
     </script>
