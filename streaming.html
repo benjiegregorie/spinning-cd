@@ -27,9 +27,6 @@
             background: #eee; /* Light grey container */
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Dark shadow for contrast */
-            transform: scale(10);
-            opacity: 0;
-            animation: zoomOut 0.5s ease-out forwards;
         }
         .sticker {
             display: block;
@@ -58,9 +55,6 @@
             box-shadow: 5px 5px 0 #fff, inset 2px 2px 0 #000, inset -2px -2px 0 #7f7f7f; /* Inverted beveled look */
             font-family: 'Courier New', monospace;
             color: #000;
-            transform: scale(10);
-            opacity: 0;
-            animation: zoomOut 0.5s ease-out forwards;
         }
         .sticker {
             display: block;
@@ -100,6 +94,14 @@
         <a href="https://tidal.com/album/446535191" class="sticker">TIDAL</a>
     </div>
     <script>
+        // Apply zoomOut animation only if coming from index.html
+        window.addEventListener('load', () => {
+            const container = document.querySelector('.container');
+            if (document.referrer.includes('index.html')) {
+                container.style.animation = 'zoomOut 0.5s ease-out forwards';
+            }
+        });
+
         document.addEventListener('click', function(event) {
             const container = document.querySelector('.container');
             if (!container.contains(event.target)) {
