@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinning CD Portal</title>
+    <style>
+        body { 
+            margin: 0; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background: #fff; 
+            overflow: hidden;
+        }
+        .cd {
+            width: min(20vw, 20vh);
+            height: min(20vw, 20vh);
+            background: url('cd.png') no-repeat center;
+            background-size: cover;
+            animation: spin 4s linear infinite;
+            position: relative;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .cd:hover { 
+            animation-duration: 8s; 
+        }
+        /* Media queries for responsive sizing */
+        @media (max-width: 480px) { /* Small screens (phones) */
+            .cd {
+                width: min(30vw, 30vh);
+                height: min(30vw, 30vh);
+            }
+        }
+        @media (min-width: 481px) and (max-width: 1024px) { /* Medium screens (tablets) */
+            .cd {
+                width: min(25vw, 25vh);
+                height: min(25vw, 25vh);
+            }
+        }
+        @media (min-width: 1025px) { /* Large screens (laptops/desktops) */
+            .cd {
+                width: min(15vw, 15vh);
+                height: min(15vw, 15vh);
+            }
+        }
+        /* Zoom transition */
+        .zoom { 
+            animation: zoomIn 1s forwards; 
+        }
+        @keyframes spin { 
+            from { transform: rotate(0deg); } 
+            to { transform: rotate(360deg); } 
+        }
+        @keyframes zoomIn { 
+            to { transform: scale(10); opacity: 0; } 
+        }
+    </style>
+</head>
+<body>
+    <div class="cd" onclick="this.classList.add('zoom'); setTimeout(() => { window.location.href='streaming.html'; }, 1000);"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+</body>
+</html>
