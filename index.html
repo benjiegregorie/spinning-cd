@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spinning CD Portal</title>
+    <link rel="preload" href="cd.png" as="image"> <!-- Preload the image -->
     <style>
         body { 
             margin: 0; 
@@ -15,41 +16,41 @@
             overflow: hidden;
         }
         .cd {
-            width: min(20vw, 20vh);
-            height: min(20vw, 20vh);
+            width: min(30vw, 30vh); /* Increased base size */
+            height: min(30vw, 30vh);
             background: url('cd.png') no-repeat center;
             background-size: cover;
             animation: spin 4s linear infinite;
             position: relative;
             cursor: pointer;
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1)); /* Subtle drop shadow on disc */
         }
         .cd:hover { 
-            animation-duration: 8s; 
+            animation: spin 8s linear infinite; /* Changed to same animation with longer duration for smooth transition */
         }
         /* Media queries for responsive sizing */
         @media (max-width: 480px) { /* Small screens (phones) */
             .cd {
-                width: min(30vw, 30vh);
-                height: min(30vw, 30vh);
+                width: min(40vw, 40vh);
+                height: min(40vw, 40vh);
             }
         }
         @media (min-width: 481px) and (max-width: 1024px) { /* Medium screens (tablets) */
             .cd {
-                width: min(25vw, 25vh);
-                height: min(25vw, 25vh);
+                width: min(35vw, 35vh);
+                height: min(35vw, 35vh);
             }
         }
         @media (min-width: 1025px) { /* Large screens (laptops/desktops) */
             .cd {
-                width: min(15vw, 15vh);
-                height: min(15vw, 15vh);
+                width: min(25vw, 25vh); /* Larger on laptops */
+                height: min(25vw, 25vh);
             }
         }
-        /* Zoom transition */
+        /* Faster zoom transition */
         .zoom { 
-            animation: zoomIn 1s forwards; 
+            animation: zoomIn 0.5s ease-out forwards; 
         }
         @keyframes spin { 
             from { transform: rotate(0deg); } 
@@ -61,7 +62,7 @@
     </style>
 </head>
 <body>
-    <div class="cd" onclick="this.classList.add('zoom'); setTimeout(() => { window.location.href='streaming.html'; }, 1000);"></div>
+    <div class="cd" onclick="this.classList.add('zoom'); setTimeout(() => { window.location.href='streaming.html'; }, 500);"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 </body>
 </html>
