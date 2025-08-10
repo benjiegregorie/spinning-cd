@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream the Album</title>
+    <style>
+        body { 
+            margin: 0; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background: #111; 
+            color: #fff; 
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        a { 
+            color: #fff; 
+            text-decoration: none; 
+        }
+        /* Simple and Minimal Style (default: clean, cool, black background with subtle glow) */
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        .sticker {
+            display: block;
+            margin: 15px auto;
+            padding: 10px 20px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            width: 200px;
+            font-size: 18px;
+            color: #fff; /* White text for links */
+        }
+        .sticker:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+        /* Quirky Cyber Silver Y2K Winamp Skin Style (uncomment this block and comment the simple one above to switch) */
+        /*
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #c0c0c0, #a9a9a9); /* Silver gradient */
+            border: 2px solid #000;
+            border-radius: 0; /* Sharp edges for Y2K */
+            box-shadow: 5px 5px 0 #000, inset 2px 2px 0 #fff, inset -2px -2px 0 #808080; /* Beveled Winamp look */
+            font-family: 'Courier New', monospace;
+            color: #fff; /* White text for consistency */
+        }
+        .sticker {
+            display: block;
+            margin: 15px auto;
+            padding: 10px 20px;
+            background: #00ff00; /* Neon green buttons */
+            border: 1px solid #000;
+            border-radius: 0;
+            box-shadow: 2px 2px 0 #000;
+            transition: box-shadow 0.3s, transform 0.3s;
+            width: 200px;
+            font-size: 18px;
+            color: #fff; /* White text for links */
+            text-transform: uppercase;
+        }
+        .sticker:hover {
+            box-shadow: 1px 1px 0 #000;
+            transform: translate(1px, 1px);
+        }
+        a { color: #fff; }
+        */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://open.spotify.com/album/7pPf6Drl5n1D2WMgBajSNS?go=1&nd=1&dlsi=0062443552354fad" class="sticker">Spotify</a>
+        <a href="https://music.apple.com/bg/album/pesni-za-lqtoto/1825257902" class="sticker">Apple Music</a>
+        <a href="https://music.youtube.com/playlist?list=OLAK5uy_lxI27yrnJtNJOzbdPoX1XxitcVJiiRs80&si=KFqiuWcA7uQudYMN" class="sticker">YouTube Music</a>
+        <a href="https://tidal.com/album/446535191" class="sticker">TIDAL</a>
+    </div>
+    <script>
+        document.addEventListener('click', function(event) {
+            const container = document.querySelector('.container');
+            if (!container.contains(event.target)) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
